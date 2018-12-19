@@ -6,99 +6,115 @@
 
 /* Section/Article */
 
-	section, article {
-		&.special {
-			text-align: center;
-		}
-	}
+section,
+article {
+  &.special {
+    text-align: center;
+  }
+}
 
-	header {
-		&.major {
-			margin-bottom: (_size(element-margin) * 1.5);
+span {
+  &.hide {
+    display: none;
+  }
 
-			h2 {
-				font-size: 2em;
+  &.backwards {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+}
 
-				&:after {
-					display: block;
-					content: '';
-					width: 3.25em;
-					height: 2px;
-					margin: (_size(element-margin) * 0.35) 0 (_size(element-margin) * 0.5) 0;
-					border-radius: 2px;
+header {
+  &.major {
+    margin-bottom: (_size(element-margin) * 1.5);
 
-					section.special &, article.special & {
-						margin-left: auto;
-						margin-right: auto;
-					}
-				}
-			}
+    h2 {
+      font-size: 2em;
 
-			p {
-				font-size: 1.25em;
-				letter-spacing: _font(letter-spacing);
-			}
+      &:after {
+        display: block;
+        content: '';
+        width: 3.25em;
+        height: 2px;
+        margin: (_size(element-margin) * 0.35) 0 (_size(element-margin) * 0.5) 0;
+        border-radius: 2px;
 
-			&.special {
-				text-align: center;
+        section.special &,
+        article.special & {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
 
-				h2 {
-					&:after {
-						margin-left: auto;
-						margin-right: auto;
-					}
-				}
-			}
-		}
-	}
+    p {
+      font-size: 1.25em;
+      letter-spacing: _font(letter-spacing);
+    }
 
-	footer {
-		&.major {
-			margin-top: (_size(element-margin) * 1.5);
-		}
-	}
+    &.special {
+      text-align: center;
 
-	@include breakpoint(small) {
-		header {
-			&.major {
-				margin-bottom: 0;
+      h2 {
+        &:after {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
 
-				h2 {
-					font-size: 1.5em;
-				}
+footer {
+  &.major {
+    margin-top: (_size(element-margin) * 1.5);
+  }
+}
 
-				p {
-					font-size: 1em;
-					letter-spacing: 0;
+@include breakpoint(small) {
+  header {
+    &.major {
+      margin-bottom: 0;
 
-					br {
-						display: none;
-					}
-				}
-			}
-		}
+      h2 {
+        font-size: 1.5em;
+      }
 
-		footer {
-			&.major {
-				margin-top: 0;
-			}
-		}
-	}
+      p {
+        font-size: 1em;
+        letter-spacing: 0;
 
-	@mixin color-section($p: null) {
-		header {
-			&.major {
-				h2 {
-					&:after {
-						background-color: _palette($p, border);
+        br {
+          display: none;
+        }
+      }
+    }
+  }
 
-						@if $p == 'invert' {
-							@include vendor('background-image', 'linear-gradient(90deg, #{_palette(accent1)}, #{_palette(accent3)}, #{_palette(accent5)})');
-						}
-					}
-				}
-			}
-		}
-	}
+  footer {
+    &.major {
+      margin-top: 0;
+    }
+  }
+}
 
-	@include color-section;
+@mixin color-section($p: null) {
+  header {
+    &.major {
+      h2 {
+        &:after {
+          background-color: _palette($p, border);
+
+          @if $p == 'invert' {
+            @include vendor(
+              'background-image',
+              'linear-gradient(90deg, #{_palette(accent1)}, #{_palette(accent3)}, #{_palette(accent5)})'
+            );
+          }
+        }
+      }
+    }
+  }
+}
+
+@include color-section;
