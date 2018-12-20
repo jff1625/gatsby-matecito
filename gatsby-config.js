@@ -21,5 +21,17 @@ module.exports = {
     },
     'gatsby-plugin-sass',
     'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-source-facebook`,
+      options: {
+        key:
+          'EAABle6h9zocBAI1uSl2N6Gsp35nKC6NSld38pKFMGZBXmFVJKrq38pQGfbLTeax8XkvoM6XoZA3ct1tGmjpjCtZBIiZA1Nsj5JXgDYGvqZAxUgGKdtA1kqHfWIgzFHVSdhVjrVeZAvcM6fwU2iolmxo3x77TocJymhsNrZA14Rt6t7a8yhGqTF4oGPZCP4SDZB4gZD',
+        places: ['298595417204010'],
+        params: {
+          fields:
+            'about,phone,events{name,description,id,is_page_owned,cover,end_time,start_time,parent_group,place,owner,picture,photos.limit(10),videos.limit(10),updated_time},posts{message,description,event,full_picture,picture,id,name,updated_time}',
+        },
+      },
+    },
   ],
 }
