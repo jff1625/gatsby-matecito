@@ -6,11 +6,40 @@ import Waypoint from 'react-waypoint'
 import Layout from '../components/layout'
 import Header from '../components/Header'
 import Nav from '../components/Nav'
+import Post from '../components/Post'
+
 import gerardo from '../assets/images/gerardo01.jpg'
+
+import { graphql } from 'gatsby'
+
+export const query = graphql`
+  {
+    site: site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+    feed: allFacebookFeed(limit: 10) {
+      edges {
+        node {
+          id
+          message
+          #story
+          description
+          picture
+          full_picture
+          created_time
+        }
+      }
+    }
+  }
+`
 
 class Index extends React.Component {
   constructor(props) {
     super(props)
+    console.log('data: ', props.data)
     this.state = {
       stickyNav: false,
     }
@@ -25,9 +54,16 @@ class Index extends React.Component {
   }
 
   render() {
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const siteDescription = this.props.data.site.siteMetadata.description
+
+    // merge the posts and events and sort them by date
+    const posts = this.props.data.feed.edges
+    console.log('the posts', posts)
+
     return (
       <Layout>
-        <Helmet title="Gatsby Starter - Stellar" />
+        <Helmet title={siteTitle} />
 
         <Header />
 
@@ -44,11 +80,7 @@ class Index extends React.Component {
                 <header className="major">
                   <h2>Latin Music for your event</h2>
                 </header>
-                <p>
-                  Matecito Latin Band plays the best of Latin rhythms also
-                  Mariachi locally and internationally, we will make your event
-                  unforgettable.
-                </p>
+                <p>{siteDescription}</p>
               </div>
               <span className="image">
                 <img src={gerardo} alt="" />
@@ -61,7 +93,15 @@ class Index extends React.Component {
               <h2>News</h2>
             </header>
             <ul className="features">
-              <li>
+              {posts.map(post => (
+                //console.log("post", post);
+                <li>
+                  <h3>{post.node.name}</h3>
+                  <p>{post.node.message}</p>
+                  <p>{post.node.description}</p>
+                </li>
+              ))}
+              {/*<li>
                 <span className="icon major style1 fa-code" />
                 <h3>Ipsum consequat</h3>
                 <p>
@@ -84,7 +124,7 @@ class Index extends React.Component {
                   Sed lorem amet ipsum dolor et amet nullam consequat a feugiat
                   consequat tempus veroeros sed consequat.
                 </p>
-              </li>
+              </li>*/}
             </ul>
             <footer className="major">
               <ul className="actions">

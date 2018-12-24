@@ -10,6 +10,7 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-source-facebook": "^1.0.2",
+    "gatsby-source-filesystem": "^2.0.12",
     "node-sass": "^4.9.3",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
