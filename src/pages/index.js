@@ -24,6 +24,7 @@ export const query = graphql`
       edges {
         node {
           id
+          name
           message
           #story
           description
@@ -39,9 +40,9 @@ export const query = graphql`
 class Index extends React.Component {
   constructor(props) {
     super(props)
-    console.log('data: ', props.data)
     this.state = {
       stickyNav: false,
+      numPostsToShow: 3,
     }
   }
 
@@ -53,13 +54,20 @@ class Index extends React.Component {
     this.setState(() => ({ stickyNav: true }))
   }
 
+  showMore(orLess = true) {
+    const newVal = orLess ? this.state.numPostsToShow + 3 : 3
+    this.setState(state => ({
+      numPostsToShow: newVal,
+    }))
+  }
+
   render() {
     const siteTitle = this.props.data.site.siteMetadata.title
     const siteDescription = this.props.data.site.siteMetadata.description
 
     // merge the posts and events and sort them by date
-    const posts = this.props.data.feed.edges
-    console.log('the posts', posts)
+    const posts = this.props.data.feed.edges.slice(0, this.state.numPostsToShow)
+    const showMoreOrLess = this.state.numPostsToShow < 9
 
     return (
       <Layout>
@@ -93,45 +101,23 @@ class Index extends React.Component {
               <h2>News</h2>
             </header>
             <ul className="features">
-              {posts.map(post => (
-                //console.log("post", post);
-                <li>
-                  <h3>{post.node.name}</h3>
-                  <p>{post.node.message}</p>
-                  <p>{post.node.description}</p>
-                </li>
-              ))}
-              {/*<li>
-                <span className="icon major style1 fa-code" />
-                <h3>Ipsum consequat</h3>
-                <p>
-                  Sed lorem amet ipsum dolor et amet nullam consequat a feugiat
-                  consequat tempus veroeros sed consequat.
-                </p>
-              </li>
-              <li>
-                <span className="icon major style3 fa-copy" />
-                <h3>Amed sed feugiat</h3>
-                <p>
-                  Sed lorem amet ipsum dolor et amet nullam consequat a feugiat
-                  consequat tempus veroeros sed consequat.
-                </p>
-              </li>
-              <li>
-                <span className="icon major style5 fa-diamond" />
-                <h3>Dolor nullam</h3>
-                <p>
-                  Sed lorem amet ipsum dolor et amet nullam consequat a feugiat
-                  consequat tempus veroeros sed consequat.
-                </p>
-              </li>*/}
+              {posts.map(post => {
+                return (
+                  <li key={post.node.id}>
+                    <Post props={post.node} />
+                  </li>
+                )
+              })}
             </ul>
             <footer className="major">
               <ul className="actions">
                 <li>
-                  <Link to="/generic" className="button">
-                    Learn More
-                  </Link>
+                  <button
+                    onClick={this.showMore.bind(this, showMoreOrLess)}
+                    className="button"
+                  >
+                    Show {showMoreOrLess ? 'More' : 'Less'}
+                  </button>
                 </li>
               </ul>
             </footer>

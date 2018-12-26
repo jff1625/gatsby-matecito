@@ -29,7 +29,7 @@ module.exports = {
         places: ['298595417204010'],
         params: {
           fields:
-            'feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=10},about,phone',
+            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12}',
         },
       },
     },
