@@ -25,8 +25,8 @@ module.exports = {
       resolve: `gatsby-source-facebook`,
       options: {
         key:
-          'EAAfDUV56O0YBAKHCg7tlZCZCN5QA62Ls9DvsoZChlWr6rFriWZBxOZCkBKgphpODBt4VVeqW1ZCi0HQdirUV9ot3RgS4zpUW4ARcZCuQN9G7lKZBLefZCj8c8RXJhMAvbonAyFwHQKqKDxh1RsbeZBwp1UYZBhQgMENQD1esoAb6tP50glvJNa0AmHfuqiarT4UIjZBapPw0ZAktczwZDZD', //'2185079081810758|283e027b4c931c574adf28b5119c3bb4', //'EAABle6h9zocBAI1uSl2N6Gsp35nKC6NSld38pKFMGZBXmFVJKrq38pQGfbLTeax8XkvoM6XoZA3ct1tGmjpjCtZBIiZA1Nsj5JXgDYGvqZAxUgGKdtA1kqHfWIgzFHVSdhVjrVeZAvcM6fwU2iolmxo3x77TocJymhsNrZA14Rt6t7a8yhGqTF4oGPZCP4SDZB4gZD',
-        places: ['298595417204010'], //['2185079081810758'], //['298595417204010'],
+          'EAAfDUV56O0YBAPNqShRfbHNuo5rm71exLgwkDEZAp9ZBmPose72vh6L6WVVSBZBMZBk8E1n0mYJKOxW2wZB5phOquhDrW6j39TTdCwuhH8NBND0hqnsHxa1w0h1PTBOUd3cy7ENbehZCMQw97ZBEUae3YzK20dIR0WUxj5CwuvNawZDZD',
+        places: ['298595417204010'],
         params: {
           fields:
             'feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=10},about,phone',
