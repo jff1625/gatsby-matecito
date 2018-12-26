@@ -12,7 +12,7 @@ const Footer = props => (
         <dd>(021) 1043691</dd>
         <dt>Email</dt>
         <dd>
-          <a href="mailto:&#103;&#116;&#111;&#114;&#114;&#101;&#115;&#95;&#112;&#101;&#114;&#117;&#64;&#121;&#97;&#104;&#111;&#111;&#46;&#101;&#115;?subject=Contact%20Request&body=Your%20Name%3A%0A%0APhone%20Number%3A%0A%0AYour%20Question%3A">
+          <a href="mailto:&#103;&#116;&#111;&#114;&#114;&#101;&#115;&#95;&#112;&#101;&#114;&#117;&#64;&#121;&#97;&#104;&#111;&#111;&#46;&#101;&#115;">
             <span className="backwards">
               se.oohay@<span className="hide">foo</span>urep_serrotg
             </span>

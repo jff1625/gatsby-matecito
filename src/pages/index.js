@@ -161,7 +161,7 @@ class Index extends React.Component {
                 function, ball.
               </p>
             </header>
-            <footer className="major">
+            {/* <footer className="major">
               <ul className="actions">
                 <li>
                   <Link to="/generic" className="button">
@@ -169,7 +169,7 @@ class Index extends React.Component {
                   </Link>
                 </li>
               </ul>
-            </footer>
+            </footer> */}
           </section>
 
           <section id="contact" className="main special">
@@ -180,7 +180,7 @@ class Index extends React.Component {
             <footer className="major">
               <ul className="actions">
                 <li>
-                  <a href="mailto:&#103;&#116;&#111;&#114;&#114;&#101;&#115;&#95;&#112;&#101;&#114;&#117;&#64;&#121;&#97;&#104;&#111;&#111;&#46;&#101;&#115;%3Fsubject%3DContact%20Request%26body%3DYour%20Name%3A%0A%0APhone%20Number%3A%0A%0AYour%20Question%3A">
+                  <a href="mailto:&#103;&#116;&#111;&#114;&#114;&#101;&#115;&#95;&#112;&#101;&#114;&#117;&#64;&#121;&#97;&#104;&#111;&#111;&#46;&#101;&#115;\">
                     Email Us
                   </a>
                 </li>
