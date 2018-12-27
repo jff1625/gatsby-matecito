@@ -1,5 +1,4 @@
 import React from 'react'
-import { PEER_HOST_IPV6 } from 'opentracing/lib/ext/tags'
 
 const Post = props => {
   const duplicateText = props.props.description === props.props.message

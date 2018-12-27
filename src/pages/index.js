@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import Waypoint from 'react-waypoint'
 
@@ -9,6 +8,7 @@ import Nav from '../components/Nav'
 import Post from '../components/Post'
 
 import gerardo from '../assets/images/gerardo01.jpg'
+import hero from '../assets/images/matecito-hero.jpg'
 
 import { graphql } from 'gatsby'
 
@@ -18,6 +18,8 @@ export const query = graphql`
       siteMetadata {
         title
         description
+        canonicalUrl
+        fbAppID
       }
     }
     feed: allFacebookFeed(limit: 10) {
@@ -62,17 +64,28 @@ class Index extends React.Component {
   }
 
   render() {
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const siteDescription = this.props.data.site.siteMetadata.description
+    const site = this.props.data.site.siteMetadata
 
-    // merge the posts and events and sort them by date
     const posts = this.props.data.feed.edges.slice(0, this.state.numPostsToShow)
     const showMoreOrLess = this.state.numPostsToShow < 9
 
+    console.log('siteTitle:', site.title)
+
     return (
       <Layout>
-        <Helmet title={siteTitle} />
-
+        <Helmet title={site.title}>
+          <meta name="description" content={site.description} />
+          <html lang="en" />
+          <link rel="canonical" href={site.canonicalUrl} />
+          <meta property="og:url" content={site.canonicalUrl} />
+          <meta property="og:type" content="website" />
+          <meta property="og:locale" content="en-nz" />
+          <meta property="og:site_name" content={site.title} />
+          <meta property="og:image" content={hero} />
+          <meta property="og:image:width" content="1232" />
+          <meta property="og:image:height" content="469" />
+          <meta property="fb:app_id" content={site.fbAppID} />
+        </Helmet>
         <Header />
 
         <Waypoint
@@ -88,7 +101,7 @@ class Index extends React.Component {
                 <header className="major">
                   <h2>Latin Music for your event</h2>
                 </header>
-                <p>{siteDescription}</p>
+                <p>{site.description}</p>
               </div>
               <span className="image">
                 <img src={gerardo} alt="" />

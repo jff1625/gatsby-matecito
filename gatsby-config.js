@@ -8,14 +8,16 @@ module.exports = {
     author: 'Jeff Boyes',
     description:
       'Matecito Latin Band plays the best of Latin rhythms also Mariachi Locally and internationally, we will make your event unforgettable.',
+    canonicalUrl: 'https://www.matecito.co.nz',
+    fbAppID: process.env.FB_APP_ID,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'Matecito Latin Band',
+        short_name: 'Matecito',
         start_url: '/',
         background_color: '#FCBB15',
         theme_color: '#FCBB15',
@@ -29,16 +31,12 @@ module.exports = {
       resolve: `gatsby-source-facebook`,
       options: {
         key: process.env.FB_KEY,
-        places:  ['298595417204010'],//['matecitolatinband'],
+        places: [process.env.FB_APP_ID], //['matecitolatinband'],
         params: {
           fields:
             'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12}',
         },
       },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: { name: `src`, path: `${__dirname}/src/` },
     },
   ],
 }
