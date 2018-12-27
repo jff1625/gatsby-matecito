@@ -29,7 +29,7 @@ module.exports = {
       resolve: `gatsby-source-facebook`,
       options: {
         key: process.env.FB_KEY,
-        places: ['298595417204010'],
+        places:  ['298595417204010'],//['matecitolatinband'],
         params: {
           fields:
             'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12}',

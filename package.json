@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-stellar",
-  "description": "Gatsby Starter - Stellar by HTML5 UP",
+  "name": "gatsby-matecito",
+  "description": "Website for Matecito Latin Band",
   "version": "1.0.0",
-  "author": "Hunter Chang",
+  "author": "Jeff Boyes",
   "dependencies": {
     "gatsby": "^2.0.0",
     "gatsby-plugin-manifest": "^2.0.2",
@@ -34,6 +34,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/jff1625/gatsby-matecito.git"
   }
 }
