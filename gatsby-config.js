@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Matecito Latin Band',
@@ -24,8 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-source-facebook`,
       options: {
-        key:
-          'EAAfDUV56O0YBAPNqShRfbHNuo5rm71exLgwkDEZAp9ZBmPose72vh6L6WVVSBZBMZBk8E1n0mYJKOxW2wZB5phOquhDrW6j39TTdCwuhH8NBND0hqnsHxa1w0h1PTBOUd3cy7ENbehZCMQw97ZBEUae3YzK20dIR0WUxj5CwuvNawZDZD',
+        key: process.env.FB_KEY,
         places: ['298595417204010'],
         params: {
           fields:
