@@ -36,6 +36,24 @@ export const query = graphql`
         }
       }
     }
+    albums: allFacebookAlbums{
+      totalCount
+      edges {
+        node {
+          id
+          photos{
+            data {
+              id
+              images{
+                source
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
 

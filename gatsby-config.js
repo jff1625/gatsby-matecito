@@ -34,7 +34,7 @@ module.exports = {
         places: [process.env.FB_APP_ID], //['matecitolatinband'],
         params: {
           fields:
-            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12}',
+            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12},albums{count,photos{images,id}}',
         },
       },
     },
