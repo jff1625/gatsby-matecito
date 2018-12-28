@@ -31,10 +31,10 @@ module.exports = {
       resolve: `gatsby-source-facebook`,
       options: {
         key: process.env.FB_KEY,
-        places: [process.env.FB_APP_ID], //['matecitolatinband'],
+        places: [process.env.FB_APP_ID],
         params: {
           fields:
-            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status,type,limit=12},events{id,name,start_time,place,limit=12},albums{count,photos{images,id}}',
+            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status_type,from,type},events{id,name,start_time,place},albums{count,photos{images,id}},videos{picture,title,source}',
         },
       },
     },

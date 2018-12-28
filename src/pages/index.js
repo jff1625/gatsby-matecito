@@ -13,7 +13,7 @@ import hero from '../assets/images/matecito-hero.jpg'
 import { graphql } from 'gatsby'
 
 export const query = graphql`
-  {
+  query {
     site: site {
       siteMetadata {
         title
@@ -22,7 +22,7 @@ export const query = graphql`
         fbAppID
       }
     }
-    feed: allFacebookFeed(limit: 10) {
+    feed: allFacebookFeed {
       edges {
         node {
           id
@@ -33,18 +33,21 @@ export const query = graphql`
           picture
           full_picture
           created_time
+          from {
+            id
+          }
         }
       }
     }
-    albums: allFacebookAlbums{
+    albums: allFacebookAlbums {
       totalCount
       edges {
         node {
           id
-          photos{
+          photos {
             data {
               id
-              images{
+              images {
                 source
                 width
                 height
@@ -84,7 +87,9 @@ class Index extends React.Component {
   render() {
     const site = this.props.data.site.siteMetadata
 
-    const posts = this.props.data.feed.edges.slice(0, this.state.numPostsToShow)
+    const posts = this.props.data.feed.edges
+      .filter(node => node.node.from && node.node.from.id === site.fbAppID)
+      .slice(0, this.state.numPostsToShow)
     const showMoreOrLess = this.state.numPostsToShow < 9
 
     console.log('siteTitle:', site.title)
