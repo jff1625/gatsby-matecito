@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import Waypoint from 'react-waypoint'
+import ImageGallery from 'react-image-gallery'
 
 import Layout from '../components/layout'
 import Header from '../components/Header'
@@ -57,6 +58,18 @@ export const query = graphql`
         }
       }
     }
+    videos: allFacebookVideos {
+      edges {
+        node {
+          id
+          title
+          description
+          updated_time
+          source
+          picture
+        }
+      }
+    }
   }
 `
 
@@ -90,6 +103,25 @@ class Index extends React.Component {
     const posts = this.props.data.feed.edges
       .filter(node => node.node.from && node.node.from.id === site.fbAppID)
       .slice(0, this.state.numPostsToShow)
+
+    const gallery = []
+
+    this.props.data.videos.edges.forEach(video => {
+      gallery.push({
+        thumbnail: video.node.picture,
+        original: video.node.source,
+      })
+    })
+
+    this.props.data.albums.edges.forEach(album => {
+      album.node.photos.data.forEach(item => {
+        gallery.push({
+          thumbnail: item.images[item.images.length - 1].source,
+          original: item.images[0].source,
+        })
+      })
+    })
+
     const showMoreOrLess = this.state.numPostsToShow < 9
 
     console.log('siteTitle:', site.title)
@@ -157,6 +189,26 @@ class Index extends React.Component {
                 </li>
               </ul>
             </footer>
+          </section>
+
+          <section id="gallery" className="main special">
+            <header className="major">
+              <h2>Gallery</h2>
+            </header>
+
+            <ImageGallery items={gallery} />
+
+            {/* <ul className="features">
+              {gallery.map(item => {
+                return (
+                  <li key={item.id}>
+                    <span className="image main">
+                      <img src={item.source} alt="" />
+                    </span>
+                  </li>
+                )
+              })}
+            </ul> */}
           </section>
 
           <section id="about" className="main special">

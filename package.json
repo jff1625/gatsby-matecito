@@ -15,6 +15,7 @@
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.12",
     "react-scroll-to-element": "^0.2.0",
     "react-scrollspy": "^3.3.5",
     "react-waypoint": "^8.0.3"

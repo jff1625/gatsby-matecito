@@ -34,7 +34,7 @@ module.exports = {
         places: [process.env.FB_APP_ID],
         params: {
           fields:
-            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status_type,from,type},events{id,name,start_time,place},albums{count,photos{images,id}},videos{picture,title,source}',
+            'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status_type,from,type},events{id,name,start_time,place},albums{count,photos{images,id}},videos{description,id,updated_time,title,picture,source}',
         },
       },
     },
