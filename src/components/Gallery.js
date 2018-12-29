@@ -2,6 +2,8 @@ import React from 'react'
 import ImageGallery from 'react-image-gallery'
 import { StaticQuery, graphql } from 'gatsby'
 
+import poster from '../assets/images/matecito-poster.jpg'
+
 //low rent state value, so we can stop video playing when it slides out of view
 const videoRefs = []
 
@@ -27,7 +29,7 @@ export default () => (
             }
           }
         }
-        videos: allFacebookVideos {
+        fbVideos: allFacebookVideos {
           edges {
             node {
               id
@@ -39,13 +41,25 @@ export default () => (
             }
           }
         }
+        localVideos: allFile(filter: { sourceInstanceName: { eq: "video" } }) {
+          edges {
+            node {
+              id
+              extension
+              dir
+              relativePath
+              publicURL
+              absolutePath
+            }
+          }
+        }
       }
     `}
     render={data => {
       console.log('gallery')
       const galleryItems = []
 
-      data.videos.edges.forEach(video => {
+      data.fbVideos.edges.forEach(video => {
         const videoElement = (
           <video
             controls
@@ -60,6 +74,27 @@ export default () => (
         videoRefs.push(videoElement.ref)
         galleryItems.push({
           thumbnail: video.node.picture,
+          renderItem: () => (
+            <div className="image-gallery-image">{videoElement}</div>
+          ),
+        })
+      })
+
+      data.localVideos.edges.forEach(video => {
+        const videoElement = (
+          <video
+            controls
+            src={video.node.publicURL}
+            poster={poster}
+            width="100%"
+            ref={React.createRef()}
+          >
+            Sorry, your browser doesn't support this video
+          </video>
+        )
+        videoRefs.push(videoElement.ref)
+        galleryItems.push({
+          thumbnail: poster,
           renderItem: () => (
             <div className="image-gallery-image">{videoElement}</div>
           ),
