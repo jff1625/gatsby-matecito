@@ -59,26 +59,26 @@ export default () => (
       console.log('gallery')
       const galleryItems = []
 
-      data.fbVideos.edges.forEach(video => {
-        const videoElement = (
-          <video
-            controls
-            src={video.node.source}
-            poster={video.node.picture}
-            width="100%"
-            ref={React.createRef()}
-          >
-            Sorry, your browser doesn't support this video
-          </video>
-        )
-        videoRefs.push(videoElement.ref)
-        galleryItems.push({
-          thumbnail: video.node.picture,
-          renderItem: () => (
-            <div className="image-gallery-image">{videoElement}</div>
-          ),
-        })
-      })
+      // data.fbVideos.edges.forEach(video => {
+      //   const videoElement = (
+      //     <video
+      //       controls
+      //       src={video.node.source}
+      //       poster={video.node.picture}
+      //       width="100%"
+      //       ref={React.createRef()}
+      //     >
+      //       Sorry, your browser doesn't support this video
+      //     </video>
+      //   )
+      //   videoRefs.push(videoElement.ref)
+      //   galleryItems.push({
+      //     thumbnail: video.node.picture,
+      //     renderItem: () => (
+      //       <div className="image-gallery-image">{videoElement}</div>
+      //     ),
+      //   })
+      // })
 
       data.localVideos.edges.forEach(video => {
         const videoElement = (
