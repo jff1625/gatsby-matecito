@@ -39,7 +39,6 @@
     ),
   )
 );
-
 @mixin color($p) {
   @include color-typography($p);
   @include color-box($p);
@@ -51,14 +50,10 @@
   @include color-table($p);
   @include color-spotlight($p);
 }
-
 // Base.
-
 @import 'base/page';
 @import 'base/typography';
-
 // Component.
-
 @import 'components/box';
 @import 'components/button';
 @import 'components/form';
@@ -70,9 +65,8 @@
 @import 'components/features';
 @import 'components/statistics';
 @import 'components/spotlight';
-
+@import 'components/gallery';
 // Layout.
-
 @import 'layout/header';
 @import 'layout/nav';
 @import 'layout/main';

@@ -10,6 +10,7 @@ module.exports = {
       'Matecito Latin Band plays the best of Latin rhythms also Mariachi Locally and internationally, we will make your event unforgettable.',
     canonicalUrl: 'https://www.matecito.co.nz',
     fbAppID: process.env.FB_APP_ID,
+    fbPageID: process.env.FB_PAGE_ID,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -31,7 +32,7 @@ module.exports = {
       resolve: `gatsby-source-facebook`,
       options: {
         key: process.env.FB_KEY,
-        places: [process.env.FB_APP_ID],
+        places: [process.env.FB_PAGE_ID],
         params: {
           fields:
             'about,phone,name,feed{id,name,event,created_time,message,story,caption,full_picture,description,link,is_hidden,picture,place,status_type,from,type},events{id,name,start_time,place},albums{count,photos{images,id}},videos{description,id,updated_time,title,picture,source}',

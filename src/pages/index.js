@@ -21,6 +21,7 @@ export const query = graphql`
         description
         canonicalUrl
         fbAppID
+        fbPageID
       }
     }
     feed: allFacebookFeed {
